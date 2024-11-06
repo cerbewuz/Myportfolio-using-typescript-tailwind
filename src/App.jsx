@@ -7,7 +7,7 @@ function App() {
 
   return (
       <> 
-     <div className="flex">
+     <div className="flex-grow">
       <div className="group relative">
         <Sidebar />
       </div>
