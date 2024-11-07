@@ -4,12 +4,12 @@ const Sidebar = () => {
   return (
     <>
       {/* Sidebar Container */}
-      <div className="relative top-32 left-0 bg-transparent dark:bg-black flex flex-col items-center justify-center">
+      <div class="top-32 left-0 bg-transparent flex flex-col items-center justify-center">
         {/* Sidebar width adjusts to content and ensures responsiveness */}
-        <div className="w-auto h-auto flex flex-col justify-center items-center bg-transparent p-4">
+        <div class="w-auto h-auto flex flex-col justify-center items-center bg-transparent p-4">
           {/* Sidebar content */}
-          <ul className="space-y-4">
-            <li className="hover:bg-white cursor-pointer p-2">
+          <ul class="space-y-4">
+            <li class="hover:scale-110 transition-transform duration-300 cursor-pointer p-2">
               <a
                 href="https://www.facebook.com/profile.php?id=61560265347802"
                 target="_blank"
@@ -18,11 +18,11 @@ const Sidebar = () => {
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-plain.svg"
                   alt="Facebook Logo"
-                  className="w-8 sm:w-10 md:w-12 lg:w-16 rounded-16"
+                  class="w-8 sm:w-10 md:w-12 lg:w-16 rounded-16 dark:bg-white"
                 />
               </a>
             </li>
-            <li className="hover:bg-blue-400 rounded dark:hover:bg-white cursor-pointer p-2">
+            <li class="hover:scale-110 transition-transform duration-300 dark:hover:bg-white cursor-pointer p-2">
               <a
                 href="https://ph.linkedin.com/in/renvic-emenido03"
                 target="_blank"
@@ -31,11 +31,11 @@ const Sidebar = () => {
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg"
                   alt="LinkedIn Logo"
-                  className="w-8 sm:w-10 md:w-12 lg:w-16 dark:bg-blue-300"
+                  class="w-8 sm:w-10 md:w-12 lg:w-16 dark:bg-blue-300"
                 />
               </a>
             </li>
-            <li className="hover:bg-blue-400 rounded-full dark:hover:bg-white cursor-pointer p-2">
+            <li class="hover:scale-110 transition-transform duration-300 rounded-full dark:hover:bg-white cursor-pointer p-2">
               <a
                 href="https://github.com/cerbewuz"
                 target="_blank"
@@ -44,7 +44,7 @@ const Sidebar = () => {
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
                   alt="GitHub Logo"
-                  className="w-8 sm:w-10 md:w-12 lg:w-16 dark:bg-white dark:rounded-full"
+                  class="w-8 sm:w-10 md:w-12 lg:w-16 dark:bg-white dark:rounded-full"
                 />
               </a>
             </li>
