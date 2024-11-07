@@ -1,7 +1,7 @@
-import Sidebar from "./components/sidebar"
-import Navbar from "./components/navbar"
-import DarkMode from "./components/darkmode"
-import Main from "./components/main"
+import Sidebar from "./components/sidebar";
+import Navbar from "./components/navbar";
+import DarkMode from "./components/darkmode";
+import Main from "./components/main";
 
 function App() {
   return (
