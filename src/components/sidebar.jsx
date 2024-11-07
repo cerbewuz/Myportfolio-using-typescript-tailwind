@@ -4,7 +4,7 @@ const Sidebar = () => {
   return (
     <>
       {/* Sidebar Container */}
-      <div className="fixed top-12 left-0 h-screen bg-transparent text-white flex flex-col items-center justify-center">
+      <div className="relative top-12 left-0 h-screen bg-transparent text-white flex flex-col items-center justify-center">
         {/* Sidebar width and styling for different screen sizes */}
         <div className="w-16 sm:w-20 md:w-24 lg:w-32 h-full flex flex-col justify-center items-center bg-transparent p-4">
           {/* Sidebar content */}

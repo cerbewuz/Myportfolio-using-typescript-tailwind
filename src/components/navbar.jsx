@@ -1,15 +1,14 @@
-import React from 'react';
+import React from 'react'
 
 const Navbar = () => {
   return (
     <>
-      {/* Navbar container */}
-      <div className="absolute top-0 left-0 w-full bg-transparent">
+      {/* Fixed Navbar container */}
+      <div className="fixed top-0 left-0 w-full bg-white dark:bg-gray-900 shadow-md z-50">
         {/* Navbar content */}
         <div className="flex justify-center items-center px-4 py-2 md:px-6 md:py-4">
-
-           {/* Navbar Links */}
-           <div className="flex space-x-4 sm:space-x-6 md:space-x-8 items-center text-black dark:text-white">
+          {/* Navbar Links */}
+          <div className="flex space-x-4 sm:space-x-6 md:space-x-8 items-center text-black dark:text-white">
             <a
               href="#"
               className="group relative p-2 sm:p-3 cursor-pointer text-sm sm:text-lg md:text-xl font-kanit transition-all duration-300 ease-in-out"
@@ -45,4 +44,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar 
+export default Navbar

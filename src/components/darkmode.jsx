@@ -19,7 +19,7 @@ const DarkMode = () => {
   }, [darkMode]);
 
   return (
-    <div className="fixed top-8 sm:top-12 md:top-10 lg:top-8 right-4 z-50">
+    <div className="relative top-12 sm:top-16 md:top-10 lg:top-8 right-4">
       {/* Toggle button */}
       <button
         onClick={toggleDarkMode}
