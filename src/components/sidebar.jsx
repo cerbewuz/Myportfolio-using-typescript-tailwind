@@ -1,44 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react'
 
 const Sidebar = () => {
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
-
-  const toggleSidebar = () => setIsSidebarOpen(!isSidebarOpen);
-
   return (
     <>
       {/* Sidebar Container */}
-      <div className="relative">
-        {/* Hamburger Menu (visible on small screens only) */}
-        <div
-          className="md:hidden fixed top-4 left-4 z-50"
-          onClick={toggleSidebar}
-        >
-          <svg
-            className="w-8 h-8 text-black cursor-pointer"
-            fill="none"
-            stroke="currentColor"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          </svg>
-        </div>
-
-        {/* Sidebar */}
-        <div
-          className={`fixed justify-center items-center top-0 left-0 h-screen bg-transparent text-white w-16 sm:w-24 md:w-32 flex flex-col items-center p-4 transform transition-transform duration-300 ease-in-out ${
-            isSidebarOpen ? 'translate-x-0' : '-translate-x-full'
-          } md:translate-x-0`}
-        >
+      <div className="fixed top-12 left-0 h-screen bg-transparent text-white flex flex-col items-center justify-center">
+        {/* Sidebar width and styling for different screen sizes */}
+        <div className="w-16 sm:w-20 md:w-24 lg:w-32 h-full flex flex-col justify-center items-center bg-transparent p-4">
           {/* Sidebar content */}
           <ul className="space-y-4">
-            <li className="sm:p-4 hover:bg-gray-700 cursor-pointer">
+            <li className="hover:bg-white cursor-pointer p-2">
               <a
                 href="https://www.facebook.com/profile.php?id=61560265347802"
                 target="_blank"
@@ -47,11 +18,11 @@ const Sidebar = () => {
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/facebook/facebook-plain.svg"
                   alt="Facebook Logo"
-                  className="w-8 sm:w-12 md:w-16 lg:w-24"
+                  className="w-8 sm:w-10 md:w-12 lg:w-16 rounded-16"
                 />
               </a>
             </li>
-            <li className="sm:p-4 hover:bg-gray-700 cursor-pointer">
+            <li className="hover:bg-blue-400 rounded dark:hover:bg-white cursor-pointer p-2">
               <a
                 href="https://ph.linkedin.com/in/renvic-emenido03"
                 target="_blank"
@@ -60,11 +31,11 @@ const Sidebar = () => {
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linkedin/linkedin-plain.svg"
                   alt="LinkedIn Logo"
-                  className="w-8 sm:w-12 md:w-16 lg:w-24"
+                  className="w-8 sm:w-10 md:w-12 lg:w-16 dark:bg-blue-300"
                 />
               </a>
             </li>
-            <li className="sm:p-4 hover:bg-gray-700 cursor-pointer">
+            <li className="hover:bg-blue-400 rounded-full dark:hover:bg-white cursor-pointer p-2">
               <a
                 href="https://github.com/cerbewuz"
                 target="_blank"
@@ -73,7 +44,7 @@ const Sidebar = () => {
                 <img
                   src="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg"
                   alt="GitHub Logo"
-                  className="w-8 sm:w-12 md:w-16 lg:w-24"
+                  className="w-8 sm:w-10 md:w-12 lg:w-16 dark:bg-white dark:rounded-full"
                 />
               </a>
             </li>

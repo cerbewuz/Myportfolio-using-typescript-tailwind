@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="flex justify-center items-center px-4 py-2 md:px-6 md:py-4">
 
            {/* Navbar Links */}
-           <div className="flex space-x-4 sm:space-x-6 md:space-x-8 items-center text-black">
+           <div className="flex space-x-4 sm:space-x-6 md:space-x-8 items-center text-black dark:text-white">
             <a
               href="#"
               className="group relative p-2 sm:p-3 cursor-pointer text-sm sm:text-lg md:text-xl font-kanit transition-all duration-300 ease-in-out"
