@@ -4,9 +4,9 @@ const Sidebar = () => {
   return (
     <>
       {/* Sidebar Container */}
-      <div className="relative top-12 left-0 h-screen bg-transparent text-white flex flex-col items-center justify-center">
-        {/* Sidebar width and styling for different screen sizes */}
-        <div className="w-16 sm:w-20 md:w-24 lg:w-32 h-full flex flex-col justify-center items-center bg-transparent p-4">
+      <div className="relative top-32 left-0 bg-transparent dark:bg-black flex flex-col items-center justify-center">
+        {/* Sidebar width adjusts to content and ensures responsiveness */}
+        <div className="w-auto h-auto flex flex-col justify-center items-center bg-transparent p-4">
           {/* Sidebar content */}
           <ul className="space-y-4">
             <li className="hover:bg-white cursor-pointer p-2">

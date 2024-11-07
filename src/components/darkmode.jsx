@@ -19,7 +19,7 @@ const DarkMode = () => {
   }, [darkMode]);
 
   return (
-    <div className="relative top-12 sm:top-16 md:top-10 lg:top-8 right-4">
+    <div className="fixed top-12 right-4 z-50">
       {/* Toggle button */}
       <button
         onClick={toggleDarkMode}
@@ -41,10 +41,10 @@ const DarkMode = () => {
           </svg>
         ) : (
           <svg
-            className="w-8 h-8 text-gray-700"
+            className="w-8 h-7 text-gray-700 bg-white dark:bg-gray-800 dark:text-white rounded-full"
             fill="none"
             stroke="currentColor"
-            viewBox="0 0 24 24"
+            viewBox="21 23 24 25"
             xmlns="http://www.w3.org/2000/svg">
             <path
               strokeLinecap="round"
@@ -52,6 +52,10 @@ const DarkMode = () => {
               strokeWidth="2"
               d="M12 3C8.134 3 5 6.134 5 10s3.134 7 7 7 7-3.134 7-7-3.134-7-7-7z">
              </path>
+              {/* Moon (outer circle) */}
+            <circle cx="33" cy="35" r="10" fill="yellow" />
+            {/* Shadow (crescent shape) */}
+            <circle cx="39" cy="29" r="10" fill="white" />
           </svg>
         )}
       </button>
