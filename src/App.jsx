@@ -1,7 +1,7 @@
-import Sidebar from "./components/sidebar"
-import Navbar from "./components/navbar"
-import DarkMode from "./components/darkmode"
-import Main from "./components/main"
+import Sidebar from "./Components/Sidebar"
+import Navbar from "./Components/Navbar"
+import Darkmode from "./Components/Darkmode"
+import Main from "./Components/Main"
 
 function App() {
   return (
@@ -38,5 +38,4 @@ function App() {
   
 }
 
-export default App
 export default App
