@@ -2,6 +2,7 @@ import { motion } from "framer-motion";
 
 // Import images from src/images
 import lingapdvoImg from "../images/lingapdvo.png";
+import telsysImg from "../images/telsys.png";
 
 type ProjectsProps = {
   id?: string;
@@ -15,14 +16,15 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
         "A web application designed to simplify the application process for medical financial assistance in Davao City using OCR and automated workflows.",
       tech: ["C#", ".NET", "SQL Server"],
       image: lingapdvoImg,
-      link: "#",
+      link: "https://lingapdvo.runasp.net/",
     },
     {
       title: "Telsys Dev Team Website",
       description:
-        "A modern website for Telsys Dev Team showcasing services, portfolio, and team information with a professional UI.",
-      tech: ["React", "Next.js", "TailwindCSS", "Framer Motion"],
-      link: "#",
+        "A modern website for Telsys Dev Team showcasing services, portfolio, and team information.",
+      tech: ["Typescript", "TailwindCSS"],
+      image: telsysImg,
+      link: "https://portfolio-lime-delta-95.vercel.app/",
     },
     {
       title: "Student Voting System",
@@ -48,7 +50,9 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
       >
         Projects
       </motion.h2>
-
+      <h3 className="text-lg md:text-xl text-gray-300 max-w-2xl text-center mb-10">
+        Here are some of the my projects built with modern web technologies.
+      </h3>
       {/* Project Cards */}
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 max-w-6xl w-full">
         {projectList.map((project, i) => (
