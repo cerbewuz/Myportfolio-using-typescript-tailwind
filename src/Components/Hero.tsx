@@ -16,28 +16,33 @@ export default function Hero({ id = "home" }: HeroProps) {
 
     const currentWord = words[index]
     if (!isDeleting && displayedText.length < currentWord.length) {
-      // typing
       timeout = setTimeout(
         () => setDisplayedText(currentWord.slice(0, displayedText.length + 1)),
         100
       )
     } else if (isDeleting && displayedText.length > 0) {
-      // deleting
       timeout = setTimeout(
         () => setDisplayedText(currentWord.slice(0, displayedText.length - 1)),
         60
-      );
+      )
     } else if (!isDeleting && displayedText.length === currentWord.length) {
-      // pause before deleting
       timeout = setTimeout(() => setIsDeleting(true), 1500)
     } else if (isDeleting && displayedText.length === 0) {
-      // move to next word
       setIsDeleting(false)
       setIndex((prev) => (prev + 1) % words.length)
     }
 
     return () => clearTimeout(timeout)
   }, [displayedText, isDeleting, index, words])
+
+  // 🔹 Smooth scroll handler
+  const scrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    const target = document.getElementById("projects")
+    if (target) {
+      target.scrollIntoView({ behavior: "smooth" })
+    }
+  }
 
   return (
     <section
@@ -83,7 +88,8 @@ export default function Hero({ id = "home" }: HeroProps) {
 
       {/* Call-to-Action Button */}
       <motion.a
-        href="#projects"
+        href="projects"
+        onClick={scrollToProjects} // 🔹 use smooth scroll
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.6, delay: 0.6 }}

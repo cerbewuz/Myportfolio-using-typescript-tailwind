@@ -50,7 +50,7 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
         Projects
       </motion.h2>
       <h3 className="text-lg md:text-xl text-gray-300 max-w-2xl text-center mb-10">
-        Here are some of the my projects built with modern web technologies.
+        Here are some of my projects built with modern web and desktop technologies.
       </h3>
       {/* Project Cards */}
       <div className="grid gap-8 sm:grid-cols-2 md:grid-cols-3 max-w-6xl w-full">
