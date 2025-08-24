@@ -29,7 +29,7 @@ export default function Navbar() {
       className="fixed top-0 left-0 w-full bg-gray-900/80 backdrop-blur-md shadow-md z-50"
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-2">
-        <a href="#home" onClick={(e) => handleClick(e, "#home")} className="flex items-center">
+        <a href="home" onClick={(e) => handleClick(e, "home")} className="flex items-center">
   <div className="h-16 w-36 md:h-20 md:w-44 flex items-center justify-center">
     <img
       src="/portfolio-icon-header.png"
