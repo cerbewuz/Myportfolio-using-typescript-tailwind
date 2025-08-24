@@ -3,18 +3,17 @@ import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X } from "lucide-react"
 
 const navItems = [
-  { label: "Home", href: "home" },
-  { label: "About Me", href: "about" },
-  { label: "Projects", href: "projects" },
-  { label: "Contact", href: "contact" },
+  { label: "Home", id: "home" },
+  { label: "About Me", id: "about" },
+  { label: "Projects", id: "projects" },
+  { label: "Contact", id: "contact" },
 ];
 
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
 
-  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
-    e.preventDefault()
-    const target = document.getElementById(href)
+  const handleClick = (id: string) => {
+    const target = document.getElementById(id)
     if (target) {
       target.scrollIntoView({ behavior: "smooth" })
     }
@@ -29,15 +28,20 @@ export default function Navbar() {
       className="fixed top-0 left-0 w-full bg-gray-900/80 backdrop-blur-md shadow-md z-50"
     >
       <div className="max-w-6xl mx-auto flex items-center justify-between px-4 py-2">
-        <a href="home" onClick={(e) => handleClick(e, "home")} className="flex items-center">
-  <div className="h-16 w-36 md:h-20 md:w-44 flex items-center justify-center">
-    <img
-      src="/portfolio-icon-header.png"
-      alt="Portfolio Logo"
-      className="max-h-full max-w-full object-contain"
-    />
-  </div>
-</a>
+        <button
+          onClick={() => handleClick("home")}
+          className="flex items-center"
+        >
+          <div className="h-16 w-36 md:h-20 md:w-44 flex items-center justify-center">
+            <img
+              src="/portfolio-icon-header.png"
+              alt="Portfolio Logo"
+              className="max-h-full max-w-full object-contain"
+            />
+          </div>
+        </button>
+
+        {/* Desktop nav */}
         <ul className="hidden md:flex gap-8 text-gray-300 text-lg font-medium">
           {navItems.map((item, i) => (
             <motion.li
@@ -45,16 +49,17 @@ export default function Navbar() {
               whileHover={{ scale: 1.1, color: "#fff" }}
               className="cursor-pointer hover:text-white transition-colors"
             >
-              <a
-                href={item.href}
-                onClick={(e) => handleClick(e, item.href)}
+              <button
+                onClick={() => handleClick(item.id)}
                 className="block"
               >
                 {item.label}
-              </a>
+              </button>
             </motion.li>
           ))}
         </ul>
+
+        {/* Mobile toggle */}
         <button
           className="md:hidden text-gray-300 hover:text-white transition relative z-[60]"
           onClick={() => setIsOpen(!isOpen)}
@@ -62,6 +67,8 @@ export default function Navbar() {
           {isOpen ? <X size={28} /> : <Menu size={28} />}
         </button>
       </div>
+
+      {/* Mobile nav */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -78,13 +85,12 @@ export default function Navbar() {
                   whileHover={{ scale: 1.05, color: "#fff" }}
                   className="cursor-pointer hover:text-white transition-colors"
                 >
-                  <a
-                    href={item.href}
-                    onClick={(e) => handleClick(e, item.href)}
-                    className="block w-full py-2"
+                  <button
+                    onClick={() => handleClick(item.id)}
+                    className="block w-full py-2 text-left"
                   >
                     {item.label}
-                  </a>
+                  </button>
                 </motion.li>
               ))}
             </ul>
