@@ -32,7 +32,7 @@ export default function Navbar() {
         <a href="#home" onClick={(e) => handleClick(e, "#home")} className="flex items-center">
   <div className="h-16 w-36 md:h-20 md:w-44 flex items-center justify-center">
     <img
-      src="/assets/portfolio-icon-header.png"
+      src="/portfolio-icon-header.png"
       alt="Portfolio Logo"
       className="max-h-full max-w-full object-contain"
     />
