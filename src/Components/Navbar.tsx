@@ -14,7 +14,7 @@ export default function Navbar() {
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
-    const target = document.querySelector(href)
+    const target = document.getElementById(href)
     if (target) {
       target.scrollIntoView({ behavior: "smooth" })
     }
