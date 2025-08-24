@@ -1,26 +1,26 @@
-import { motion, AnimatePresence } from "framer-motion";
-import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion"
+import { useEffect, useState } from "react"
 
 type HeroProps = {
-  id?: string;
+  id?: string
 };
 
 export default function Hero({ id = "home" }: HeroProps) {
-  const words = ["Renvic Emenido", "A Coding Enthusiast", "A Passionate Web Developer"];
-  const [index, setIndex] = useState(0);
-  const [displayedText, setDisplayedText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
+  const words = ["Renvic Emenido", "A Coding Enthusiast", "A Passionate Web Developer"]
+  const [index, setIndex] = useState(0)
+  const [displayedText, setDisplayedText] = useState("")
+  const [isDeleting, setIsDeleting] = useState(false)
 
   useEffect(() => {
-    let timeout: NodeJS.Timeout;
+    let timeout: NodeJS.Timeout
 
-    const currentWord = words[index];
+    const currentWord = words[index]
     if (!isDeleting && displayedText.length < currentWord.length) {
       // typing
       timeout = setTimeout(
         () => setDisplayedText(currentWord.slice(0, displayedText.length + 1)),
         100
-      );
+      )
     } else if (isDeleting && displayedText.length > 0) {
       // deleting
       timeout = setTimeout(
@@ -29,22 +29,22 @@ export default function Hero({ id = "home" }: HeroProps) {
       );
     } else if (!isDeleting && displayedText.length === currentWord.length) {
       // pause before deleting
-      timeout = setTimeout(() => setIsDeleting(true), 1500);
+      timeout = setTimeout(() => setIsDeleting(true), 1500)
     } else if (isDeleting && displayedText.length === 0) {
       // move to next word
-      setIsDeleting(false);
-      setIndex((prev) => (prev + 1) % words.length);
+      setIsDeleting(false)
+      setIndex((prev) => (prev + 1) % words.length)
     }
 
-    return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, index, words]);
+    return () => clearTimeout(timeout)
+  }, [displayedText, isDeleting, index, words])
 
   return (
     <section
       id={id}
       className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white text-center px-6"
     >
-      {/* Heading */}
+      {/* Header */}
       <motion.h1
         initial={{ opacity: 0, y: -40 }}
         animate={{ opacity: 1, y: 0 }}
@@ -94,5 +94,5 @@ export default function Hero({ id = "home" }: HeroProps) {
         View My Work
       </motion.a>
     </section>
-  );
+  )
 }

@@ -1,12 +1,11 @@
-import { motion } from "framer-motion";
-
+import { motion } from "framer-motion"
 // Import images from src/images
-import lingapdvoImg from "../images/lingapdvo.png";
-import telsysImg from "../images/telsys.png";
+import lingapdvoImg from "../images/lingapdvo.png"
+import telsysImg from "../images/telsys.png"
 
 type ProjectsProps = {
-  id?: string;
-};
+  id?: string
+}
 
 export default function Projects({ id = "projects" }: ProjectsProps) {
   const projectList = [
@@ -33,7 +32,7 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
       tech: ["PHP", "MySQL", "Bootstrap", "JavaScript"],
       link: "#",
     },
-  ];
+  ]
 
   return (
     <section
@@ -105,5 +104,5 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
         ))}
       </div>
     </section>
-  );
+  )
 }

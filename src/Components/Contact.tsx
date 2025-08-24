@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
-import { Github, Linkedin } from "lucide-react";
+import { motion } from "framer-motion"
+import { Github, Linkedin } from "lucide-react"
 
 type ContactProps = {
-  id?: string;
+  id?: string
 };
 
 export default function Contact({ id = "contact" }: ContactProps) {
@@ -86,5 +86,5 @@ export default function Contact({ id = "contact" }: ContactProps) {
         </motion.button>
       </form>
     </section>
-  );
+  )
 }

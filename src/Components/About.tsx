@@ -1,8 +1,8 @@
-import { motion } from "framer-motion";
+import { motion } from "framer-motion"
 
 type AboutProps = {
-  id?: string;
-};
+  id?: string
+}
 
 export default function About({ id = "about" }: AboutProps) {
   return (
@@ -56,5 +56,5 @@ export default function About({ id = "about" }: AboutProps) {
         )}
       </motion.div>
     </section>
-  );
+  )
 }
