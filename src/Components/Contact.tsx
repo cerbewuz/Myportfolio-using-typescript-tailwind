@@ -1,5 +1,5 @@
 import { motion } from "framer-motion"
-import { Github, Linkedin } from "lucide-react"
+import { Github, Linkedin, Mail } from "lucide-react"
 
 type ContactProps = {
   id?: string
@@ -9,82 +9,85 @@ export default function Contact({ id = "contact" }: ContactProps) {
   return (
     <section
       id={id}
-      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white px-6 py-16"
+      className="py-24 px-6 max-w-5xl mx-auto border-t border-gray-200 dark:border-gray-800/50"
     >
-      {/* Title */}
-      <motion.h2
-        initial={{ opacity: 0, y: -30 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        viewport={{ once: true }}
-        className="text-4xl md:text-5xl font-bold mb-8 text-blue-400"
-      >
-        Contact Me
-      </motion.h2>
+      <div className="grid md:grid-cols-2 gap-20">
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          className="space-y-8"
+        >
+          <div>
+            <h2 className="text-2xl font-bold tracking-tight mb-4">Contact</h2>
+            <p className="text-xl text-gray-600 dark:text-gray-400 leading-relaxed text-pretty font-medium">
+              I'm always open to new opportunities and collaborations. Reach out via the form or my social channels.
+            </p>
+          </div>
 
-      {/* Social Links */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        viewport={{ once: true }}
-        className="flex gap-6 mb-10"
-      >
-        <a
-          href="https://github.com/cerbewuz"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-100 transition"
-        >
-          <Github size={60} />
-        </a>
-        <a
-          href="https://ph.linkedin.com/in/renvic-emenido03"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-400 hover:text-blue-100 transition"
-        >
-          <Linkedin size={60} />
-        </a>
-      </motion.div>
+          <div className="flex gap-4">
+            <a href="https://github.com/cerbewuz" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-gray-100 dark:bg-[#111] text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white border border-gray-200/50 dark:border-gray-800/50 transition-colors">
+              <Github size={20} />
+            </a>
+            <a href="https://ph.linkedin.com/in/renvic-emenido03" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-gray-100 dark:bg-[#111] text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white border border-gray-200/50 dark:border-gray-800/50 transition-colors">
+              <Linkedin size={20} />
+            </a>
+            <a href="mailto:r.emenido03@gmail.com" className="p-3 rounded-lg bg-gray-100 dark:bg-[#111] text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white border border-gray-200/50 dark:border-gray-800/50 transition-colors">
+              <Mail size={20} />
+            </a>
+          </div>
+        </motion.div>
 
-      {/* Contact Form */}
-      <form
-        action="mailto:r.emenido03@gmail.com"
-        method="POST"
-        encType="text/plain"
-        className="w-full max-w-md space-y-4"
-      >
-        <input
-          type="text"
-          name="name"
-          placeholder="Your Name"
-          required
-          className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <input
-          type="email"
-          name="email"
-          placeholder="Your Email"
-          required
-          className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <textarea
-          name="message"
-          placeholder="Your Message"
-          rows={5}
-          required
-          className="w-full px-4 py-3 rounded-lg bg-gray-800 text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-        <motion.button
-          type="submit"
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          className="w-full py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-medium shadow-lg transition"
+        <motion.form
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+          action="mailto:r.emenido03@gmail.com"
+          method="POST"
+          encType="text/plain"
+          className="space-y-6"
         >
-          Send Message
-        </motion.button>
-      </form>
+          <div className="space-y-2">
+            <label className="text-xs font-semibold tracking-wider text-gray-400 dark:text-gray-500 uppercase">Name</label>
+            <input
+              type="text"
+              name="name"
+              required
+              className="w-full px-0 py-3 bg-transparent border-b border-gray-300 dark:border-gray-800/80 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
+            />
+          </div>
+          <div className="space-y-2">
+            <label className="text-xs font-semibold tracking-wider text-gray-400 dark:text-gray-500 uppercase">Email</label>
+            <input
+              type="email"
+              name="email"
+              required
+              className="w-full px-0 py-3 bg-transparent border-b border-gray-300 dark:border-gray-800/80 focus:outline-none focus:border-black dark:focus:border-white transition-colors"
+            />
+          </div>
+          <div className="space-y-2">
+            <label className="text-xs font-semibold tracking-wider text-gray-400 dark:text-gray-500 uppercase">Message</label>
+            <textarea
+              name="message"
+              rows={4}
+              required
+              className="w-full px-0 py-3 bg-transparent border-b border-gray-300 dark:border-gray-800/80 focus:outline-none focus:border-black dark:focus:border-white transition-colors resize-none"
+            />
+          </div>
+          <button
+            type="submit"
+            className="w-full py-4 bg-black dark:bg-white text-white dark:text-black rounded-lg font-semibold tracking-wide transition-transform hover:-translate-y-0.5"
+          >
+            Send Message
+          </button>
+        </motion.form>
+      </div>
+      
+      <footer className="mt-32 pt-8 text-center border-t border-gray-200 dark:border-gray-800/50">
+        <p className="text-sm text-gray-500 dark:text-gray-400 font-medium">© {new Date().getFullYear()} Renvic Emenido. All rights reserved.</p>
+      </footer>
     </section>
   )
 }

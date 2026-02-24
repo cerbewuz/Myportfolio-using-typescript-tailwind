@@ -1,21 +1,34 @@
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X } from "lucide-react"
+import { Menu, X, Sun, Moon } from "lucide-react"
 
 const navItems = [
   { label: "Home", href: "home" },
-  { label: "About Me", href: "about" },
+  { label: "Experience", href: "experience" },
+  { label: "Certifications", href: "certifications" },
+  { label: "About", href: "about" },
   { label: "Projects", href: "projects" },
   { label: "Contact", href: "contact" },
 ]
 
-export default function Navbar() {
-  const [isOpen, setIsOpen] = useState(false)
+interface NavbarProps {
+  isDarkMode: boolean
+  toggleDarkMode: () => void
+}
 
-  const handleClick = (
-    e: React.MouseEvent<HTMLAnchorElement>,
-    href: string
-  ) => {
+export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
+  const [isOpen, setIsOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 20)
+    }
+    window.addEventListener("scroll", handleScroll)
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
     e.preventDefault()
     const target = document.getElementById(href)
     if (target) {
@@ -25,94 +38,95 @@ export default function Navbar() {
   }
 
   return (
-    <div className="group fixed top-0 left-0 right-0 z-50">
-      {/* Navbar container */}
-      <motion.nav
-        initial={{ y: -80, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8 }}
-        className="
-          bg-gray-900/80 backdrop-blur-md shadow-md
-          transition-all duration-500
-          opacity-0 group-hover:opacity-100
-          py-1 group-hover:py-3
-        "
+    <div className="fixed top-6 left-0 right-0 z-50 flex justify-center px-6 pointer-events-none">
+      <nav 
+        className={`
+          pointer-events-auto w-full max-w-2xl flex items-center justify-between px-6 h-14 rounded-full
+          transition-all duration-300 backdrop-blur-md
+          ${scrolled 
+            ? "bg-white/70 dark:bg-[#0a0a0a]/70 border border-gray-200/50 dark:border-gray-800/50 shadow-lg shadow-black/5" 
+            : "bg-transparent border border-transparent"}
+        `}
       >
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-5 h-full">
-          {/* Logo */}
-          <a
-            href="home"
-            onClick={(e) => handleClick(e, "home")}
-            className="flex items-center"
-          >
-            <div className="h-8 w-24 md:h-10 md:w-28 flex items-center justify-center transition-all group-hover:h-12 group-hover:w-32">
-              <img
-                src="/portfolio-icon-header.png"
-                alt="Portfolio Logo"
-                className="max-h-full max-w-full object-contain"
-              />
-            </div>
-          </a>
+        {/* Logo */}
+        <a
+          href="#home"
+          onClick={(e) => handleClick(e, "home")}
+          className="text-lg font-bold tracking-tighter hover:opacity-70 transition-opacity"
+        >
+          RE.
+        </a>
 
-          {/* Desktop Nav */}
-            <ul className="hidden md:flex gap-6 text-blue-300 text-sm font-medium transition-all group-hover:gap-8 group-hover:text-base">
-            {navItems.map((item, i) => (
-          <motion.li
-              key={i}
-              whileHover={{ scale: 1.1 }}
-              className="cursor-pointer hover:text-white transition-colors"
-            > 
-          <a
-              href={item.href}
-              onClick={(e) => handleClick(e, item.href)}
-              className="block"
-            >
-            {item.label}
-          </a>
-          </motion.li>
+        {/* Desktop Nav */}
+        <div className="hidden md:flex items-center gap-6">
+          <ul className="flex gap-6 text-sm font-medium">
+            {navItems.map((item) => (
+              <li key={item.label}>
+                <a
+                  href={`#${item.href}`}
+                  onClick={(e) => handleClick(e, item.href)}
+                  className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                >
+                  {item.label}
+                </a>
+              </li>
             ))}
           </ul>
+          
+          <div className="w-[1px] h-4 bg-gray-300 dark:bg-gray-700" />
 
-          {/* Mobile Toggle */}
           <button
-            className="md:hidden text-gray-300 hover:text-white transition relative z-[60]"
-            onClick={() => setIsOpen(!isOpen)}
+            onClick={toggleDarkMode}
+            className="text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
+            aria-label="Toggle dark mode"
           >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
           </button>
         </div>
 
-        {/* Mobile Nav */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial={{ height: 0, opacity: 0 }}
-              animate={{ height: "auto", opacity: 1 }}
-              exit={{ height: 0, opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="md:hidden bg-gray-900/95 backdrop-blur-md px-6 py-4 shadow-lg z-[55] relative"
-            >
-              <ul className="flex flex-col gap-4 text-gray-300 text-lg font-medium">
-                {navItems.map((item, i) => (
-                  <motion.li
-                    key={i}
-                    whileHover={{ scale: 1.05, color: "#0c58cbff" }}
-                    className="cursor-pointer hover:text-white transition-colors"
+        {/* Mobile Actions */}
+        <div className="flex md:hidden items-center gap-4">
+          <button
+            onClick={toggleDarkMode}
+            className="text-gray-500 dark:text-gray-400"
+          >
+            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+          </button>
+          <button
+            className="text-gray-500 dark:text-gray-400"
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X size={20} /> : <Menu size={20} />}
+          </button>
+        </div>
+      </nav>
+
+      {/* Mobile Nav Overlay */}
+      <AnimatePresence>
+        {isOpen && (
+          <motion.div
+            initial={{ opacity: 0, y: -20, scale: 0.95 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            exit={{ opacity: 0, y: -20, scale: 0.95 }}
+            transition={{ duration: 0.2 }}
+            className="absolute top-20 left-6 right-6 p-6 rounded-3xl bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 shadow-xl pointer-events-auto md:hidden"
+          >
+            <ul className="flex flex-col gap-6 text-lg font-medium">
+              {navItems.map((item) => (
+                <li key={item.label}>
+                  <a
+                    href={`#${item.href}`}
+                    onClick={(e) => handleClick(e, item.href)}
+                    className="block text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
                   >
-                    <a
-                      href={item.href}
-                      onClick={(e) => handleClick(e, item.href)}
-                      className="block w-full py-2"
-                    >
-                      {item.label}
-                    </a>
-                  </motion.li>
-                ))}
-              </ul>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.nav>
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   )
 }
