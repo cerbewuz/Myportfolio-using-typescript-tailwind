@@ -1,7 +1,7 @@
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Helvetica Neue", "Helvetica", "Arial", sans-serif;
+  --font-sans: "Inter", "Helvetica Neue", "Helvetica", "Arial", sans-serif;
 }
 
 /* Redefine dark mode to use .dark class in Tailwind v4 */

@@ -65,7 +65,7 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
             </div>
 
             <div className="space-y-3">
-              <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100 transition-colors group-hover:text-blue-500">
+              <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100 transition-colors group-hover:text-gray-600 dark:group-hover:text-gray-300">
                 {project.title}
               </h3>
               
@@ -87,7 +87,7 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
                     href={project.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center text-sm font-semibold tracking-tight text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                    className="inline-flex items-center text-sm font-semibold tracking-tight text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
                   >
                     View Project <span className="ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
                   </a>

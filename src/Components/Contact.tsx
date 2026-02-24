@@ -27,13 +27,13 @@ export default function Contact({ id = "contact" }: ContactProps) {
           </div>
 
           <div className="flex gap-4">
-            <a href="https://github.com/cerbewuz" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-gray-100 dark:bg-[#111] text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white border border-gray-200/50 dark:border-gray-800/50 transition-colors">
+            <a href="https://github.com/cerbewuz" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-gray-100 dark:bg-[#111] text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 border border-gray-200/50 dark:border-gray-800/50 transition-colors">
               <Github size={20} />
             </a>
-            <a href="https://ph.linkedin.com/in/renvic-emenido03" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-gray-100 dark:bg-[#111] text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white border border-gray-200/50 dark:border-gray-800/50 transition-colors">
+            <a href="https://ph.linkedin.com/in/renvic-emenido03" target="_blank" rel="noopener noreferrer" className="p-3 rounded-lg bg-gray-100 dark:bg-[#111] text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 border border-gray-200/50 dark:border-gray-800/50 transition-colors">
               <Linkedin size={20} />
             </a>
-            <a href="mailto:r.emenido03@gmail.com" className="p-3 rounded-lg bg-gray-100 dark:bg-[#111] text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white border border-gray-200/50 dark:border-gray-800/50 transition-colors">
+            <a href="mailto:r.emenido03@gmail.com" className="p-3 rounded-lg bg-gray-100 dark:bg-[#111] text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 border border-gray-200/50 dark:border-gray-800/50 transition-colors">
               <Mail size={20} />
             </a>
           </div>

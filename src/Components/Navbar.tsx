@@ -65,7 +65,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
                 <a
                   href={`#${item.href}`}
                   onClick={(e) => handleClick(e, item.href)}
-                  className="text-gray-500 dark:text-gray-400 hover:text-black dark:hover:text-white transition-colors"
+                  className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
                 >
                   {item.label}
                 </a>
@@ -77,7 +77,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
 
           <button
             onClick={toggleDarkMode}
-            className="text-gray-500 hover:text-black dark:text-gray-400 dark:hover:text-white transition-colors"
+            className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
             aria-label="Toggle dark mode"
           >
             {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
@@ -117,7 +117,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
                   <a
                     href={`#${item.href}`}
                     onClick={(e) => handleClick(e, item.href)}
-                    className="block text-gray-600 dark:text-gray-300 hover:text-black dark:hover:text-white transition-colors"
+                    className="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
                   >
                     {item.label}
                   </a>

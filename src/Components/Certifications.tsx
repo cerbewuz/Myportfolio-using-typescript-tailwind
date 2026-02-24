@@ -14,6 +14,7 @@ const certificationList = [
     expiry: "10/14/2030",
     id: "2d759bbe-4289-4b2f-bf90-49bdff234c9a",
     badge: "/Certifications/Badges/it-specialist-cybersecurity.webp",
+    url: "https://www.credly.com/badges/2d759bbe-4289-4b2f-bf90-49bdff234c9a/public_url",
     transcript: "/Certifications/Transcripts/Cybersecurity.webp",
   },
   {
@@ -23,6 +24,7 @@ const certificationList = [
     expiry: "07/14/2030",
     id: "29b6d34f-3914-493b-866e-e41461e648c4",
     badge: "/Certifications/Badges/it-specialist-network-security.webp",
+    url: "https://www.credly.com/badges/29b6d34f-3914-493b-866e-e41461e648c4/public_url",
     transcript: "/Certifications/Transcripts/Network-security.webp",
   },
   {
@@ -31,6 +33,7 @@ const certificationList = [
     date: "12/20/2024",
     id: "7b8d4637-39fd-4afc-9461-cccd01f66383",
     badge: "/Certifications/Badges/it-specialist-networking.webp",
+    url: "https://www.credly.com/badges/7b8d4637-39fd-4afc-9461-cccd01f66383/public_url",
     transcript: "/Certifications/Transcripts/Networking.webp",
   },
   {
@@ -39,6 +42,7 @@ const certificationList = [
     date: "05/23/2024",
     id: "3ae3fa2a-49a6-43c7-a842-73f03d47f57f",
     badge: "/Certifications/Badges/it-specialist-html-and-css.webp",
+    url: "https://www.credly.com/badges/3ae3fa2a-49a6-43c7-a842-73f03d47f57f/public_url",
     transcript: "/Certifications/Transcripts/HTML-and-CSS.webp",
   },
   {
@@ -47,6 +51,7 @@ const certificationList = [
     date: "03/09/2024",
     id: "cf28e824-2e39-4b29-b18f-5ed1656a6211",
     badge: "/Certifications/Badges/it-specialist-databases.webp",
+    url: "https://www.credly.com/badges/cf28e824-2e39-4b29-b18f-5ed1656a6211/public_url",
     transcript: "/Certifications/Transcripts/Databases.webp",
   },
   {
@@ -55,6 +60,7 @@ const certificationList = [
     date: "12/12/2022",
     id: "f5c71fef-abb1-4e71-838b-95897b79e7fe",
     badge: "/Certifications/Badges/it-specialist-java.webp",
+    url: "https://www.credly.com/badges/f5c71fef-abb1-4e71-838b-95897b79e7fe/public_url",
     transcript: "/Certifications/Transcripts/Java.webp",
   },
 ]
@@ -78,11 +84,11 @@ export default function Certifications({ id = "certifications" }: Certifications
         {certificationList.map((cert, i) => (
           <motion.div
             key={i}
-            onClick={() => setSelectedTranscript(cert.transcript)}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
             viewport={{ once: true }}
+            onClick={() => window.open(cert.url, "_blank")}
             className="group relative p-8 rounded-2xl bg-gray-50 dark:bg-[#0c0c0c] border border-gray-200/50 dark:border-gray-800/50 hover:border-gray-400 dark:hover:border-gray-600 transition-all duration-300 flex flex-col items-center text-center cursor-pointer"
           >
             {/* Badge Container */}
@@ -94,8 +100,8 @@ export default function Certifications({ id = "certifications" }: Certifications
               />
             </div>
 
-            <div className="space-y-2 flex-grow">
-              <h3 className="text-lg font-bold tracking-tight leading-snug group-hover:text-blue-500 dark:group-hover:text-blue-400 transition-colors px-2">
+            <div className="space-y-2 flex-grow mb-6">
+              <h3 className="text-lg font-bold tracking-tight leading-snug group-hover:text-gray-600 dark:group-hover:text-gray-300 transition-colors px-2">
                 {cert.title}
               </h3>
               <p className="text-sm font-medium text-gray-500 dark:text-gray-400">
@@ -113,8 +119,18 @@ export default function Certifications({ id = "certifications" }: Certifications
               </div>
             </div>
             
+            <button
+              onClick={(e) => {
+                e.stopPropagation();
+                setSelectedTranscript(cert.transcript);
+              }}
+              className="mt-auto w-full py-2 px-4 rounded-lg bg-gray-200 dark:bg-gray-800 hover:bg-gray-300 dark:hover:bg-gray-700 text-xs font-bold tracking-widest uppercase transition-colors"
+            >
+              View Certificate
+            </button>
+            
             <div className="absolute top-4 right-4 opacity-0 group-hover:opacity-100 transition-opacity">
-              <span className="text-[10px] font-bold tracking-widest uppercase text-blue-500 dark:text-blue-400">View Transcript</span>
+              <ExternalLink size={14} className="text-gray-900 dark:text-gray-100" />
             </div>
           </motion.div>
         ))}
@@ -143,14 +159,14 @@ export default function Certifications({ id = "certifications" }: Certifications
                   href={selectedTranscript} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="p-2 rounded-full bg-black/50 text-white hover:bg-black transition-colors"
+                  className="p-2 rounded-full bg-black/50 text-white hover:bg-gray-800 transition-colors"
                   title="Open in new tab"
                 >
                   <ExternalLink size={18} />
                 </a>
                 <button
                   onClick={() => setSelectedTranscript(null)}
-                  className="p-2 rounded-full bg-black/50 text-white hover:bg-black transition-colors"
+                  className="p-2 rounded-full bg-black/50 text-white hover:bg-gray-800 transition-colors"
                 >
                   <X size={18} />
                 </button>

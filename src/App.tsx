@@ -8,26 +8,49 @@ import Projects from "./Components/Projects"
 import Contact from "./Components/Contact"
 
 export default function App() {
-  const [isDarkMode, setIsDarkMode] = useState(() => {
+  const [theme, setTheme] = useState(() => {
     if (typeof window !== "undefined") {
-      const saved = localStorage.getItem("theme")
-      return saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      return localStorage.getItem("theme") || "system"
     }
-    return false
+    return "system"
   })
 
   useEffect(() => {
     const root = window.document.documentElement
-    if (isDarkMode) {
-      root.classList.add("dark")
-      localStorage.setItem("theme", "dark")
-    } else {
-      root.classList.remove("dark")
-      localStorage.setItem("theme", "light")
+    
+    const applyTheme = () => {
+      const isDark = 
+        theme === "dark" || 
+        (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)
+      
+      if (isDark) {
+        root.classList.add("dark")
+      } else {
+        root.classList.remove("dark")
+      }
     }
-  }, [isDarkMode])
 
-  const toggleDarkMode = () => setIsDarkMode(prev => !prev)
+    applyTheme()
+    localStorage.setItem("theme", theme)
+
+    // Listen for system theme changes
+    const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)")
+    const handleChange = () => {
+      if (theme === "system") applyTheme()
+    }
+
+    mediaQuery.addEventListener("change", handleChange)
+    return () => mediaQuery.removeEventListener("change", handleChange)
+  }, [theme])
+
+  const toggleDarkMode = () => {
+    setTheme(prev => (prev === "dark" ? "light" : "dark"))
+  }
+
+  // Derived state for components that expect a boolean
+  const isDarkMode = 
+    theme === "dark" || 
+    (theme === "system" && typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches)
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">

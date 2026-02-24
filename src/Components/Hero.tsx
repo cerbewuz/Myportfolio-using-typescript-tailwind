@@ -56,7 +56,7 @@ export default function Hero({ id = "home" }: HeroProps) {
               e.preventDefault();
               document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
             }}
-            className="px-6 py-3 bg-gray-100 dark:bg-[#111] text-black dark:text-white rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-[#1a1a1a] transition-colors"
+            className="px-6 py-3 bg-gray-100 dark:bg-[#111] text-black dark:text-white rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-gray-800 transition-colors"
           >
             Get in touch
           </a>
