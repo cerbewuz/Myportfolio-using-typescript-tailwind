@@ -1,41 +1,10 @@
-import { motion, AnimatePresence } from "framer-motion"
-import { useEffect, useState } from "react"
+import { motion } from "framer-motion"
 
 type HeroProps = {
   id?: string
 };
 
 export default function Hero({ id = "home" }: HeroProps) {
-  const words = ["Renvic Emenido", "A Coding Enthusiast", "A Passionate Web Developer"]
-  const [index, setIndex] = useState(0)
-  const [displayedText, setDisplayedText] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
-
-  useEffect(() => {
-    let timeout: NodeJS.Timeout
-
-    const currentWord = words[index]
-    if (!isDeleting && displayedText.length < currentWord.length) {
-      timeout = setTimeout(
-        () => setDisplayedText(currentWord.slice(0, displayedText.length + 1)),
-        100
-      )
-    } else if (isDeleting && displayedText.length > 0) {
-      timeout = setTimeout(
-        () => setDisplayedText(currentWord.slice(0, displayedText.length - 1)),
-        60
-      )
-    } else if (!isDeleting && displayedText.length === currentWord.length) {
-      timeout = setTimeout(() => setIsDeleting(true), 1500)
-    } else if (isDeleting && displayedText.length === 0) {
-      setIsDeleting(false)
-      setIndex((prev) => (prev + 1) % words.length)
-    }
-
-    return () => clearTimeout(timeout)
-  }, [displayedText, isDeleting, index, words])
-
-  // 🔹 Smooth scroll handler
   const scrollToProjects = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
     const target = document.getElementById("projects")
@@ -47,58 +16,52 @@ export default function Hero({ id = "home" }: HeroProps) {
   return (
     <section
       id={id}
-      className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-b from-gray-900 via-black to-gray-900 text-white text-center px-6"
+      className="min-h-screen flex flex-col justify-center px-6 max-w-5xl mx-auto"
     >
-      {/* Header */}
-      <motion.h1
-        initial={{ opacity: 0, y: -40 }}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8 }}
-        className="text-5xl md:text-6xl font-bold mb-4"
+        transition={{ duration: 0.8, ease: "easeOut" }}
+        className="max-w-3xl pt-24"
       >
-        Hi, I’m{" "}
-        <span className="text-blue-500 relative">
-          <AnimatePresence mode="wait">
-            <motion.span
-              key={index}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.3 }}
-              className="inline-block"
-            >
-              {displayedText}
-              <span className="animate-pulse">|</span>
-            </motion.span>
-          </AnimatePresence>
-        </span>
-      </motion.h1>
+        {/* Availability Badge */}
+        <div className="inline-flex items-center gap-2 px-3 py-1 mb-8 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 dark:text-green-400 text-sm font-medium">
+          <span className="relative flex h-2 w-2">
+            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
+            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+          </span>
+          Available for new opportunities
+        </div>
 
-      {/* Subtitle */}
-      <motion.p
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.8, delay: 0.3 }}
-        className="text-lg md:text-xl text-gray-300 max-w-xl mb-8"
-      >
-        I build modern, responsive, and interactive{" "}
-        <span className="text-blue-400">web applications</span> with React,
-        TypeScript, and TailwindCSS.
-      </motion.p>
-
-      {/* Call-to-Action Button */}
-      <motion.a
-        href="projects"
-        onClick={scrollToProjects} // 🔹 use smooth scroll
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
-        whileHover={{ scale: 1.05 }}
-        whileTap={{ scale: 0.95 }}
-        className="px-6 py-3 bg-blue-600 hover:bg-blue-700 rounded-lg font-semibold shadow-lg transition cursor-pointer"
-      >
-        View My Work
-      </motion.a>
+        <h1 className="text-5xl md:text-7xl lg:text-[5rem] font-bold tracking-tighter mb-8 leading-[1.1] text-balance">
+          Renvic Emenido. <br />
+          <span className="text-gray-400 dark:text-gray-500">Web Developer.</span>
+        </h1>
+        
+        <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 font-medium mb-12 leading-relaxed max-w-2xl text-pretty">
+          I build clean, accessible, and highly functional digital experiences. Specialized in React, TypeScript, and crafting modern user interfaces.
+        </p>
+        
+        <div className="flex flex-col sm:flex-row items-start gap-4">
+          <a
+            href="#projects"
+            onClick={scrollToProjects}
+            className="px-6 py-3 bg-black dark:bg-white text-white dark:text-black rounded-lg font-medium transition-transform hover:-translate-y-0.5"
+          >
+            View Work
+          </a>
+          <a
+            href="#contact"
+            onClick={(e) => {
+              e.preventDefault();
+              document.getElementById("contact")?.scrollIntoView({ behavior: "smooth" });
+            }}
+            className="px-6 py-3 bg-gray-100 dark:bg-[#111] text-black dark:text-white rounded-lg font-medium hover:bg-gray-200 dark:hover:bg-[#1a1a1a] transition-colors"
+          >
+            Get in touch
+          </a>
+        </div>
+      </motion.div>
     </section>
   )
 }
