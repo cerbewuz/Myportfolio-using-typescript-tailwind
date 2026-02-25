@@ -39,7 +39,7 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
         viewport={{ once: true }}
         className="text-2xl font-bold tracking-tight mb-16 text-center md:text-left"
       >
-        Selected Work
+        Projects
       </motion.h2>
 
       <div className="grid gap-x-12 gap-y-16 sm:grid-cols-2">
