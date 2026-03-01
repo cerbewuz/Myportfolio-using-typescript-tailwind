@@ -8,6 +8,12 @@ type ProjectsProps = {
 
 const projectList = [
   {
+    title: "DocTrack",
+    description: "A professional document workflow management system designed to streamline document tracking, routing, and task management with real-time status updates and role-based access control.",
+    tech: ["React", "TailwindCSS", "PostgreSQL", "Material UI"],
+    link: "https://www.doctrack.site/",
+  },
+  {
     title: "LingapDvo",
     description: "Web application designed to streamline the medical financial assistance process using OCR and automated workflows.",
     tech: ["C#", ".NET", "SQL Server", "OCR"],
