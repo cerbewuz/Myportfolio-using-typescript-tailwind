@@ -60,12 +60,12 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
             viewport={{ once: true }}
             className="group block"
           >
-            <div className="aspect-[4/3] mb-6 overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900 border border-gray-200/50 dark:border-gray-800/50">
+            <div className="aspect-video mb-6 overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-900 border border-gray-200/50 dark:border-gray-800/50">
               {project.image ? (
                 <img
                   src={project.image}
                   alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-700 ease-out group-hover:scale-[1.03]"
+                  className="w-full h-full object-cover object-top transition-transform duration-700 ease-out group-hover:scale-105"
                 />
               ) : (
                 <div className="w-full h-full flex items-center justify-center text-gray-400 font-medium">No preview available</div>
