@@ -1,6 +1,7 @@
 import { motion } from "framer-motion"
 import lingapdvoImg from "../images/lingapdvo.png"
 import telsysImg from "../images/telsys.png"
+import doctrackImg from "../images/doctrack.png"
 
 type ProjectsProps = {
   id?: string
@@ -11,6 +12,7 @@ const projectList = [
     title: "DocTrack",
     description: "A professional document workflow management system designed to streamline document tracking, routing, and task management with real-time status updates and role-based access control.",
     tech: ["React", "TailwindCSS", "PostgreSQL", "Material UI"],
+    image: doctrackImg,
     link: "https://www.doctrack.site/",
   },
   {
@@ -38,7 +40,7 @@ const projectList = [
 export default function Projects({ id = "projects" }: ProjectsProps) {
   return (
     <section id={id} className="py-24 px-6 max-w-5xl mx-auto border-t border-gray-200 dark:border-gray-800/50">
-      <motion.h2 
+      <motion.h2
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
@@ -74,7 +76,7 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
               <h3 className="text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100 transition-colors group-hover:text-gray-600 dark:group-hover:text-gray-300">
                 {project.title}
               </h3>
-              
+
               <p className="text-gray-600 dark:text-gray-400 leading-relaxed text-pretty">
                 {project.description}
               </p>
