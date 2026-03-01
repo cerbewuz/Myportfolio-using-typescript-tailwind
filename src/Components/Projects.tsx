@@ -27,7 +27,7 @@ const projectList = [
     description: "A modern, high-performance website for a development team showcasing services, their portfolio, and team information.",
     tech: ["TypeScript", "TailwindCSS", "React"],
     image: telsysImg,
-    link: "https://portfolio-lime-delta-95.vercel.app/",
+    link: "https://telsys-portfolio.vercel.app/",
   },
   {
     title: "Student Voting System",
