@@ -1,14 +1,14 @@
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
 import { Menu, X, Sun, Moon } from "lucide-react"
+import { smoothScrollTo } from "../utils/smoothScroll"
 
 const navItems = [
   { label: "Home", href: "home" },
-  { label: "Experience", href: "experience" },
-  { label: "Certifications", href: "certifications" },
   { label: "About", href: "about" },
+  { label: "Education", href: "education" },
+  { label: "Certifications", href: "certifications" },
   { label: "Projects", href: "projects" },
-  { label: "Contact", href: "contact" },
 ]
 
 interface NavbarProps {
@@ -32,7 +32,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
     e.preventDefault()
     const target = document.getElementById(href)
     if (target) {
-      target.scrollIntoView({ behavior: "smooth" })
+      smoothScrollTo(target.offsetTop - 80)
     }
     setIsOpen(false)
   }
@@ -52,14 +52,14 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
         <a
           href="#home"
           onClick={(e) => handleClick(e, "home")}
-          className="text-lg font-bold tracking-tighter hover:opacity-70 transition-opacity"
+          className="text-base md:text-lg font-bold tracking-tighter hover:opacity-70 transition-opacity"
         >
           RE.
         </a>
 
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-6">
-          <ul className="flex gap-6 text-sm font-medium">
+          <ul className="flex gap-6 text-[13px] md:text-sm font-medium">
             {navItems.map((item) => (
               <li key={item.label}>
                 <a
@@ -80,7 +80,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
             className="text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-200 transition-colors"
             aria-label="Toggle dark mode"
           >
-            {isDarkMode ? <Sun size={18} /> : <Moon size={18} />}
+            {isDarkMode ? <Sun size={16} className="md:w-[18px] md:h-[18px]" /> : <Moon size={16} className="md:w-[18px] md:h-[18px]" />}
           </button>
         </div>
 
@@ -111,7 +111,7 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
             transition={{ duration: 0.2 }}
             className="absolute top-20 left-6 right-6 p-6 rounded-3xl bg-white dark:bg-[#111] border border-gray-200 dark:border-gray-800 shadow-xl pointer-events-auto md:hidden"
           >
-            <ul className="flex flex-col gap-6 text-lg font-medium">
+            <ul className="flex flex-col gap-6 text-base font-medium">
               {navItems.map((item) => (
                 <li key={item.label}>
                   <a

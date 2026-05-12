@@ -1,11 +1,12 @@
 import { useState, useEffect } from "react"
 import Navbar from "./Components/Navbar"
 import Hero from "./Components/Hero"
-import Experience from "./Components/Experience"
-import Certifications from "./Components/Certifications"
-import About from "./Components/About"
-import Projects from "./Components/Projects"
-import Contact from "./Components/Contact"
+import Education from "./Components/Portfolio-Contents/Education"
+import Certifications from "./Components/Portfolio-Contents/Certifications"
+import About from "./Components/Portfolio-Contents/About"
+import Projects from "./Components/Portfolio-Contents/Projects"
+import Footer from "./Components/Portfolio-Contents/Footer"
+import BackToTop from "./Components/BackToTop"
 
 export default function App() {
   const [theme, setTheme] = useState(() => {
@@ -17,12 +18,12 @@ export default function App() {
 
   useEffect(() => {
     const root = window.document.documentElement
-    
+
     const applyTheme = () => {
-      const isDark = 
-        theme === "dark" || 
+      const isDark =
+        theme === "dark" ||
         (theme === "system" && window.matchMedia("(prefers-color-scheme: dark)").matches)
-      
+
       if (isDark) {
         root.classList.add("dark")
       } else {
@@ -47,22 +48,25 @@ export default function App() {
     setTheme(prev => (prev === "dark" ? "light" : "dark"))
   }
 
+  const [showContactHelper, setShowContactHelper] = useState(false)
+
   // Derived state for components that expect a boolean
-  const isDarkMode = 
-    theme === "dark" || 
+  const isDarkMode =
+    theme === "dark" ||
     (theme === "system" && typeof window !== "undefined" && window.matchMedia("(prefers-color-scheme: dark)").matches)
 
   return (
     <div className="min-h-screen bg-[var(--background)] text-[var(--foreground)] transition-colors duration-300">
       <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-      <main className="scroll-smooth">
-        <Hero id="home" />
-        <Experience id="experience" />
-        <Certifications id="certifications" />
+      <main>
+        <Hero id="home" onGetInTouch={() => setShowContactHelper(true)} />
         <About id="about" />
+        <Education id="education" />
+        <Certifications id="certifications" />
         <Projects id="projects" />
-        <Contact id="contact" />
+        <Footer id="footer" showHelper={showContactHelper} onHideHelper={() => setShowContactHelper(false)} />
       </main>
+      <BackToTop />
     </div>
   )
 }
