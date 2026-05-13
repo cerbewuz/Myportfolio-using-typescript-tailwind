@@ -72,7 +72,9 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
     e.preventDefault()
     const target = document.getElementById(href)
     if (target) {
-      smoothScrollTo(target.offsetTop - 80)
+      const isMobile = window.innerWidth < 768
+      const offset = isMobile ? 0 : 80
+      smoothScrollTo(target.offsetTop - offset)
     }
     setIsOpen(false)
   }

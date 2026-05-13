@@ -26,12 +26,13 @@ export const smoothScrollTo = (targetY: number) => {
   
   currentAnimation = animate(startY, targetY, {
     type: "spring",
-    stiffness: 120, // Increased for much faster response
-    damping: 35,   // Adjusted to prevent excessive bounce at higher speed
+    stiffness: 100, // Slightly reduced for smoother glide
+    damping: 40,   // Increased to prevent bounce and feel more premium
     mass: 1,
     onUpdate: (latest) => {
       // If the user has scrolled away from our last expected position, stop the animation
-      if (Math.abs(window.scrollY - lastExpectedY) > 10) {
+      // Relaxed threshold to 15px to prevent accidental micro-interruptions
+      if (Math.abs(window.scrollY - lastExpectedY) > 15) {
         stopAnimation();
         return;
       }

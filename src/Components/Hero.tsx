@@ -11,7 +11,9 @@ export default function Hero({ id = "home", onGetInTouch }: HeroProps) {
     e.preventDefault()
     const target = document.getElementById(targetId)
     if (target) {
-      smoothScrollTo(target.offsetTop - 80)
+      const isMobile = window.innerWidth < 768
+      const offset = isMobile ? 0 : 80
+      smoothScrollTo(target.offsetTop - offset)
       if (targetId === "footer" && onGetInTouch) {
         onGetInTouch()
       }
