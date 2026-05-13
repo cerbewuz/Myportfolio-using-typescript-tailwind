@@ -12,7 +12,7 @@ const stopAnimation = () => {
 
 // Stop animation on user interaction
 if (typeof window !== "undefined") {
-  const interruptEvents = ["wheel", "touchmove", "mousedown", "keydown"];
+  const interruptEvents = ["wheel", "touchstart", "touchmove", "mousedown", "keydown"];
   interruptEvents.forEach(event => {
     window.addEventListener(event, stopAnimation, { passive: true });
   });

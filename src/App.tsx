@@ -64,7 +64,7 @@ export default function App() {
         <Education id="education" />
         <Certifications id="certifications" />
         <Projects id="projects" />
-        <Footer id="footer" showHelper={showContactHelper} onHideHelper={() => setShowContactHelper(false)} />
+        <Footer id="footer" showHelper={showContactHelper} onHideHelper={() => setShowContactHelper(false)} onShowHelper={() => setShowContactHelper(true)} />
       </main>
       <BackToTop />
     </div>

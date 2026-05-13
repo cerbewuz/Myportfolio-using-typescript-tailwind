@@ -6,9 +6,10 @@ type FooterProps = {
   id?: string
   showHelper?: boolean
   onHideHelper?: () => void
+  onShowHelper?: () => void
 };
 
-export default function Footer({ id = "footer", showHelper, onHideHelper }: FooterProps) {
+export default function Footer({ id = "footer", showHelper, onHideHelper, onShowHelper }: FooterProps) {
   const [isModalOpen, setIsModalOpen] = useState(false)
   const [hasAutoTriggered, setHasAutoTriggered] = useState(false)
 
@@ -35,19 +36,15 @@ export default function Footer({ id = "footer", showHelper, onHideHelper }: Foot
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       onViewportEnter={() => {
-        if (!hasAutoTriggered && !showHelper && !isModalOpen) {
-          // Trigger the helper if it's not already showing and modal is closed
-          // We use a small timeout to let the scroll settle
+        if (!hasAutoTriggered && !showHelper && !isModalOpen && onShowHelper) {
+          // Trigger the helper directly via prop
           setTimeout(() => {
-            const getInTouchBtn = document.querySelector('a[href="#footer"]');
-            if (getInTouchBtn) {
-              (getInTouchBtn as HTMLElement).click();
-            }
+            onShowHelper();
           }, 500);
           setHasAutoTriggered(true);
         }
       }}
-      viewport={{ once: true, amount: 0.8 }}
+      viewport={{ once: true, amount: 0.5 }}
       className="py-10 md:py-12 px-6 max-w-5xl mx-auto border-t border-gray-200 dark:border-gray-800/50"
     >
       <div className="flex flex-col md:flex-row items-center justify-between gap-6 md:gap-8">
@@ -100,12 +97,12 @@ export default function Footer({ id = "footer", showHelper, onHideHelper }: Foot
                   initial={{ opacity: 0, y: 10, scale: 0.9 }}
                   animate={{ opacity: 1, y: 0, scale: 1 }}
                   exit={{ opacity: 0, y: 10, scale: 0.9 }}
-                  className="absolute bottom-full left-1/2 -translate-x-1/2 mb-4 w-48 p-3 rounded-lg bg-white/90 dark:bg-[#0a0a0a]/90 backdrop-blur-md text-gray-900 dark:text-gray-100 text-[11px] font-bold text-center shadow-2xl z-10 pointer-events-auto border border-gray-200 dark:border-gray-800"
+                  className="absolute bottom-full left-1/2 -translate-x-1/2 mb-3 w-48 p-3 rounded-xl bg-white dark:bg-[#0a0a0a] backdrop-blur-md text-gray-900 dark:text-gray-100 text-[11px] font-bold text-center shadow-2xl z-10 pointer-events-auto border border-gray-200 dark:border-gray-800"
                 >
                   <div className="relative">
                     Press here for my contact details!
                     {/* Speech Bubble Arrow */}
-                    <div className="absolute -bottom-[18px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-gray-200 dark:border-t-gray-800" />
+                    <div className="absolute -bottom-[21px] left-1/2 -translate-x-1/2 w-0 h-0 border-l-[6px] border-l-transparent border-r-[6px] border-r-transparent border-t-[6px] border-t-white dark:border-t-[#0a0a0a] drop-shadow-[0_1px_0_rgba(0,0,0,0.05)]" />
                   </div>
                 </motion.div>
               )}
