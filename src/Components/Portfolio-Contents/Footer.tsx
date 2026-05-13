@@ -73,7 +73,7 @@ export default function Footer({ id = "footer", showHelper, onHideHelper, onShow
             <Github size={20} />
           </a>
           <a
-            href="https://www.linkedin.com/work/renvic-emenido-467b5b293"
+            href="https://www.linkedin.com/in/renvic-emenido03"
             target="_blank"
             rel="noopener noreferrer"
             className="p-2 rounded-full bg-gray-200/80 dark:bg-[#111] text-gray-600 dark:text-gray-400 hover:text-black dark:hover:text-white transition-all hover:scale-110 active:scale-95 border border-gray-300/50 dark:border-gray-800"
