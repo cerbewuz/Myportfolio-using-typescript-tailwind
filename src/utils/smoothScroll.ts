@@ -2,8 +2,23 @@ import { animate } from "framer-motion"
 
 let currentAnimation: { stop: () => void } | null = null;
 let lastExpectedY = 0;
+let animationStartTime = 0;
+let touchStartY = 0;
 
-const stopAnimation = () => {
+const stopAnimation = (e?: Event) => {
+  // Smart Interruption:
+  // 1. If it's a touchstart, ignore it for the first 100ms
+  if (e?.type === "touchstart") {
+    touchStartY = (e as TouchEvent).touches[0].clientY;
+    if (Date.now() - animationStartTime < 100) return;
+  }
+
+  // 2. If it's a touchmove, only stop if the movement is significant (>5px)
+  if (e?.type === "touchmove") {
+    const touchY = (e as TouchEvent).touches[0].clientY;
+    if (Math.abs(touchY - touchStartY) < 5) return;
+  }
+
   if (currentAnimation) {
     currentAnimation.stop();
     currentAnimation = null;

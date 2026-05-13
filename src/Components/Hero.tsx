@@ -11,9 +11,10 @@ export default function Hero({ id = "home", onGetInTouch }: HeroProps) {
     e.preventDefault()
     const target = document.getElementById(targetId)
     if (target) {
-      const isMobile = window.innerWidth < 768
-      const offset = isMobile ? 0 : 80
-      smoothScrollTo(target.offsetTop - offset)
+      // Unified 80px offset for all devices to perfectly clear the fixed header
+      const offset = 80
+      const targetPosition = target.getBoundingClientRect().top + window.scrollY
+      smoothScrollTo(targetPosition - offset)
       if (targetId === "footer" && onGetInTouch) {
         onGetInTouch()
       }
