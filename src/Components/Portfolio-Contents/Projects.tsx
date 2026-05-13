@@ -1,8 +1,8 @@
 import { motion } from "framer-motion"
-import lingapdvoImg from "../../images/lingapdvo.png"
-import telsysImg from "../../images/telsys.png"
-import doctrackImg from "../../images/doctrack.png"
-import infosoftimg from "../../images/infosoft-internship-dtr.jpg"
+import lingapdvoImg from "../../images/lingapdvo.webp"
+import telsysImg from "../../images/telsys.webp"
+import doctrackImg from "../../images/doctrack.webp"
+import infosoftimg from "../../images/infosoft-internship-dtr.webp"
 
 type ProjectsProps = {
   id?: string
@@ -60,9 +60,9 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: i * 0.1 }}
             viewport={{ once: true }}
-            className="group block"
+            className="group block space-y-5"
           >
-            <div className="aspect-video mb-4 md:mb-6 overflow-hidden rounded-xl md:rounded-2xl bg-gray-100 dark:bg-gray-900 border border-gray-200/50 dark:border-gray-800/50">
+            <div className="aspect-video overflow-hidden rounded-xl md:rounded-2xl bg-gray-100 dark:bg-gray-900 border border-gray-200/50 dark:border-gray-800/50">
               {project.image ? (
                 <img
                   src={project.image}
@@ -74,36 +74,34 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
               )}
             </div>
 
-            <div className="space-y-3">
-              <h3 className="text-sm sm:text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100 transition-colors group-hover:text-gray-600 dark:group-hover:text-gray-300">
-                {project.title}
-              </h3>
+            <h3 className="text-sm sm:text-lg md:text-xl font-bold tracking-tight text-gray-900 dark:text-gray-100 transition-colors group-hover:text-gray-600 dark:group-hover:text-gray-300">
+              {project.title}
+            </h3>
 
-              <p className="text-[10px] sm:text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed text-pretty">
-                {project.description}
-              </p>
+            <p className="text-[10px] sm:text-sm md:text-base text-gray-600 dark:text-gray-400 leading-relaxed text-pretty">
+              {project.description}
+            </p>
 
-              <div className="flex flex-wrap gap-2 pt-2">
-                {project.tech.map((t) => (
-                  <span key={t} className="flex items-center gap-1.5 text-[9px] sm:text-xs font-semibold tracking-wider px-2 py-1 bg-gray-100 dark:bg-[#111] text-gray-500 dark:text-gray-400 rounded-md transition-colors hover:bg-gray-200 dark:hover:bg-[#1a1a1a]">
-                    {t}
-                  </span>
-                ))}
-              </div>
-
-              {project.link !== "#" && (
-                <div className="pt-4">
-                  <a
-                    href={project.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center text-[11px] sm:text-sm font-semibold tracking-tight text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
-                  >
-                    View Project <span className="ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
-                  </a>
-                </div>
-              )}
+            <div className="flex flex-wrap gap-2">
+              {project.tech.map((t) => (
+                <span key={t} className="flex items-center gap-1.5 text-[9px] sm:text-xs font-semibold tracking-wider px-2 py-1 bg-gray-100 dark:bg-[#111] text-gray-500 dark:text-gray-400 rounded-md transition-colors hover:bg-gray-200 dark:hover:bg-[#1a1a1a]">
+                  {t}
+                </span>
+              ))}
             </div>
+
+            {project.link !== "#" && (
+              <div className="flex">
+                <a
+                  href={project.link}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center text-[11px] sm:text-sm font-semibold tracking-tight text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+                >
+                  View Project <span className="ml-1 opacity-0 -translate-x-2 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">→</span>
+                </a>
+              </div>
+            )}
           </motion.div>
         ))}
       </div>

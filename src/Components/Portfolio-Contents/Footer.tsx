@@ -145,7 +145,7 @@ export default function Footer({ id = "footer", showHelper, onHideHelper, onShow
                   </div>
                   <div>
                     <p className="text-[10px] md:text-xs font-bold uppercase tracking-widest text-gray-400 mb-0.5">Email</p>
-                    <a href="mailto:renvic.emenido01@gmail.com" className="text-sm md:text-base font-medium hover:underline">renvic.emenido01@gmail.com</a>
+                    <a href="mailto:r.emenido03@gmail.com" className="text-sm md:text-base font-medium hover:underline">r.emenido03@gmail.com</a>
                   </div>
                 </div>
 

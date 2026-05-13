@@ -92,7 +92,7 @@ export default function About({ id = "about" }: AboutProps) {
           <h2 className="text-2xl font-bold tracking-tight mb-16 text-center md:text-left">About Me</h2>
           <div className="w-40 h-40 sm:w-64 sm:h-64 mx-auto md:mx-0 rounded-2xl overflow-hidden bg-gray-100 dark:bg-[#111] border border-gray-200/50 dark:border-gray-800/50 shadow-sm">
             <img
-              src="Profile-photo/My-Photo.png"
+              src="Profile-photo/My-Photo.webp"
               alt="Renvic Emenido"
               className="w-full h-full object-cover transition-transform duration-700 ease-out hover:scale-[1.03]"
             />
