@@ -83,7 +83,7 @@ export default function Projects({ id = "projects" }: ProjectsProps) {
 
               <div className="flex flex-wrap gap-2 pt-2">
                 {project.tech.map((t) => (
-                  <span key={t} className="text-[9px] sm:text-xs font-semibold tracking-wider px-1.5 py-0.5 sm:px-2 sm:py-1 bg-gray-100 dark:bg-[#111] text-gray-500 dark:text-gray-400 rounded-md">
+                  <span key={t} className="flex items-center gap-1.5 text-[9px] sm:text-xs font-semibold tracking-wider px-2 py-1 bg-gray-100 dark:bg-[#111] text-gray-500 dark:text-gray-400 rounded-md transition-colors hover:bg-gray-200 dark:hover:bg-[#1a1a1a]">
                     {t}
                   </span>
                 ))}
