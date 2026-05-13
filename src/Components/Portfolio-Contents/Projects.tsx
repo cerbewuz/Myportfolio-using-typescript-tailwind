@@ -39,13 +39,13 @@ const projectList = [
 
 export default function Projects({ id = "projects" }: ProjectsProps) {
   return (
-    <section id={id} className="py-16 md:py-24 px-6 max-w-5xl mx-auto border-t border-gray-200 dark:border-gray-800/50">
+    <section id={id} className="min-h-screen md:min-h-0 flex flex-col justify-center py-16 md:py-24 px-6 max-w-5xl mx-auto border-t border-gray-200 dark:border-gray-800/50">
       <motion.h2
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-lg sm:text-2xl font-bold tracking-tight mb-10 md:mb-16 text-center md:text-left"
+        className="text-2xl font-bold tracking-tight mb-16 text-center md:text-left"
       >
         My Projects
       </motion.h2>

@@ -19,13 +19,53 @@ interface NavbarProps {
 export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
   const [isOpen, setIsOpen] = useState(false)
   const [scrolled, setScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState("home")
 
+  // Handle scroll for navbar background
   useEffect(() => {
     const handleScroll = () => {
       setScrolled(window.scrollY > 20)
     }
     window.addEventListener("scroll", handleScroll)
     return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Body scroll locking when menu is open
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden"
+    } else {
+      document.body.style.overflow = "unset"
+    }
+    return () => {
+      document.body.style.overflow = "unset"
+    }
+  }, [isOpen])
+
+  // Active section tracking with Intersection Observer
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: "-20% 0px -70% 0px", // Focus on top-ish middle of viewport
+      threshold: 0
+    }
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          setActiveSection(entry.target.id)
+        }
+      })
+    }
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions)
+
+    navItems.forEach((item) => {
+      const element = document.getElementById(item.href)
+      if (element) observer.observe(element)
+    })
+
+    return () => observer.disconnect()
   }, [])
 
   const handleClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
@@ -65,7 +105,11 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
                 <a
                   href={`#${item.href}`}
                   onClick={(e) => handleClick(e, item.href)}
-                  className="text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+                  className={`transition-all duration-300 ${
+                    activeSection === item.href 
+                      ? "text-black dark:text-white font-bold scale-105" 
+                      : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-200"
+                  }`}
                 >
                   {item.label}
                 </a>
@@ -117,7 +161,11 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
                   <a
                     href={`#${item.href}`}
                     onClick={(e) => handleClick(e, item.href)}
-                    className="block text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200 transition-colors"
+                    className={`block transition-all duration-300 active:scale-95 ${
+                      activeSection === item.href 
+                        ? "text-black dark:text-white font-bold translate-x-2" 
+                        : "text-gray-600 dark:text-gray-300 hover:text-gray-900 dark:hover:text-gray-200"
+                    }`}
                   >
                     {item.label}
                   </a>

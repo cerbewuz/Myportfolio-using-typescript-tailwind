@@ -41,18 +41,18 @@ export default function Education({ id = "education" }: EducationProps) {
   })
 
   return (
-    <section id={id} className="py-16 md:py-24 px-6 max-w-5xl mx-auto border-t border-gray-200 dark:border-gray-800/50">
+    <section id={id} className="min-h-screen md:min-h-0 flex flex-col justify-center py-16 md:py-24 px-6 max-w-5xl mx-auto border-t border-gray-200 dark:border-gray-800/50">
       <motion.h2 
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.8 }}
         viewport={{ once: true }}
-        className="text-base sm:text-2xl font-bold tracking-tight mb-8 md:mb-16 text-center md:text-left"
+        className="text-2xl font-bold tracking-tight mb-16 text-center md:text-left"
       >
         Education
       </motion.h2>
 
-      <div ref={containerRef} className="relative space-y-10 md:space-y-16">
+      <div ref={containerRef} className="relative space-y-12 md:space-y-16">
         {/* Static Background Line */}
         <div className="absolute left-[7px] md:left-[calc(33.333%-24px)] top-2 bottom-0 w-[2px] bg-gray-100 dark:bg-gray-800" />
         
@@ -91,16 +91,16 @@ export default function Education({ id = "education" }: EducationProps) {
             />
 
             <div className="md:w-1/3 mt-1">
-              <span className="text-[11px] sm:text-sm font-semibold tracking-wider text-gray-400 dark:text-gray-500 uppercase transition-colors group-hover:text-gray-900 dark:group-hover:text-gray-200">
+              <span className="text-[12px] sm:text-sm font-semibold tracking-wider text-gray-400 dark:text-gray-500 uppercase transition-colors group-hover:text-gray-900 dark:group-hover:text-gray-200">
                 {item.period}
               </span>
             </div>
             
-            <div className="md:w-2/3 space-y-1 md:space-y-2">
-              <h3 className="text-[14px] sm:text-xl font-semibold tracking-tight transition-colors group-hover:text-gray-900 dark:group-hover:text-gray-100">{item.degree}</h3>
-              <p className="text-[11px] sm:text-sm text-gray-600 dark:text-gray-400 font-medium">{item.institution}</p>
+            <div className="md:w-2/3 space-y-1.5 md:space-y-2">
+              <h3 className="text-[15px] sm:text-xl font-semibold tracking-tight transition-colors group-hover:text-gray-900 dark:group-hover:text-gray-100">{item.degree}</h3>
+              <p className="text-[13px] sm:text-base text-gray-600 dark:text-gray-400 font-medium">{item.institution}</p>
               
-              <p className="pt-1 text-[11px] sm:text-sm text-gray-500 dark:text-gray-400 leading-relaxed text-pretty group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
+              <p className="pt-1 text-[13px] sm:text-base text-gray-500 dark:text-gray-400 leading-relaxed text-pretty group-hover:text-gray-700 dark:group-hover:text-gray-300 transition-colors">
                 {item.description}
               </p>
             </div>

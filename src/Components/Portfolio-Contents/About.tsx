@@ -65,7 +65,7 @@ export default function About({ id = "about" }: AboutProps) {
   return (
     <section
       id={id}
-      className="py-16 md:py-24 px-6 max-w-5xl mx-auto border-t border-gray-200 dark:border-gray-800/50"
+      className="min-h-screen md:min-h-0 flex flex-col justify-center py-16 md:py-24 px-6 max-w-5xl mx-auto border-t border-gray-200 dark:border-gray-800/50"
     >
       <div className="grid md:grid-cols-[1fr_2fr] gap-10 md:gap-16 items-start">
         <motion.div
@@ -74,7 +74,7 @@ export default function About({ id = "about" }: AboutProps) {
           transition={{ duration: 0.8 }}
           viewport={{ once: true }}
         >
-          <h2 className="text-lg sm:text-2xl font-bold tracking-tight mb-6 md:mb-8 text-center md:text-left">About Me</h2>
+          <h2 className="text-2xl font-bold tracking-tight mb-16 text-center md:text-left">About Me</h2>
           <div className="w-40 h-40 sm:w-64 sm:h-64 mx-auto md:mx-0 rounded-2xl overflow-hidden bg-gray-100 dark:bg-[#111] border border-gray-200/50 dark:border-gray-800/50 shadow-sm">
             <img
               src="Profile-photo/My-Photo.png"
