@@ -2,6 +2,7 @@ import { motion } from "framer-motion"
 import lingapdvoImg from "../../images/lingapdvo.png"
 import telsysImg from "../../images/telsys.png"
 import doctrackImg from "../../images/doctrack.png"
+import infosoftimg from "../../images/infosoft-internship-dtr.jpg"
 
 type ProjectsProps = {
   id?: string
@@ -19,6 +20,7 @@ const projectList = [
     title: "Infosoft Internship DTR",
     description: "An automated attendance and task management system for interns, featuring facial recognition, geolocation verification, and digital signature workflows for official reporting.",
     tech: ["React", "TailwindCSS", "Laravel", "PostgreSQL", "Framer Motion", "Supabase"],
+    image: infosoftimg,
     link: "#",
   },
   {
