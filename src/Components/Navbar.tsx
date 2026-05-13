@@ -9,7 +9,6 @@ const navItems = [
   { label: "Education", href: "education" },
   { label: "Certifications", href: "certifications" },
   { label: "Projects", href: "projects" },
-  { label: "Contact", href: "footer" },
 ]
 
 interface NavbarProps {
@@ -73,10 +72,16 @@ export default function Navbar({ isDarkMode, toggleDarkMode }: NavbarProps) {
     e.preventDefault()
     const target = document.getElementById(href)
     if (target) {
-      // Unified 80px offset for all devices to perfectly clear the fixed header
-      const offset = 80
-      const targetPosition = target.getBoundingClientRect().top + window.scrollY
-      smoothScrollTo(targetPosition - offset)
+      const isMobile = window.innerWidth < 768
+      if (isMobile) {
+        // Native browser scroll is more reliable on smartphones
+        target.scrollIntoView({ behavior: "smooth" })
+      } else {
+        // Custom premium glide for desktop
+        const offset = 80
+        const targetPosition = target.getBoundingClientRect().top + window.scrollY
+        smoothScrollTo(targetPosition - offset)
+      }
     }
     setIsOpen(false)
   }

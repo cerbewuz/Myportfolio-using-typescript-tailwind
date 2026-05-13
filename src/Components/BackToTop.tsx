@@ -20,7 +20,12 @@ export default function BackToTop() {
   }, [])
 
   const handleScrollToTop = () => {
-    smoothScrollTo(0)
+    const isMobile = window.innerWidth < 768
+    if (isMobile) {
+      window.scrollTo({ top: 0, behavior: "smooth" })
+    } else {
+      smoothScrollTo(0)
+    }
   }
 
   return (
